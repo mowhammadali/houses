@@ -6,13 +6,16 @@ import App from './App';
 
 // context wrap
 import Theme from './Context/Theme';
+import Register from './Context/Register';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <BrowserRouter>
       <Theme>
-        <App />
+        <Register>
+          <App />
+        </Register>
       </Theme>
     </BrowserRouter>
   </>
