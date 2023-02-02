@@ -5,11 +5,11 @@
 @layer components{
   .form{
     @apply flex flex-col gap-y-8 w-[350px] 
-    shadow-lg rounded-xl mx-auto mt-12 p-6 bg-zinc-300
+    shadow-lg rounded-xl mx-auto my-12 p-6 bg-zinc-300
     dark:bg-zinc-700
   }
   .input{
-    @apply h-[35px] rounded-xl outline-none px-4;
+    @apply h-[35px] rounded-xl outline-none px-4 text-slate-700;
   }
   .form-btn{
     @apply px-12 py-2 text-xl rounded-3xl bg-emerald-600 text-slate-50;
