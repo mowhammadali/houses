@@ -7,8 +7,8 @@ const SignButton = (props) => {
     return (
         <section className='flex justify-center'>
             <button className={`form-btn ${!isValid && 'opacity-50'}`}
-            type="submit" disabled={isValid}>
-                {isSubmitting ? "صبور باشید ..." : "ثبت نام"}
+            type="submit" disabled={!isValid}>
+                {isSubmitting ? "درحال ارسال..." : "ثبت نام"}
             </button>
         </section>
     );

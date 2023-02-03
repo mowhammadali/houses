@@ -29,7 +29,7 @@ const Register = () => {
                             <Input name="password" type="password" label="رمز عبور"/>
                             <Input name="confirmPassword" type="password" label="تکرار رمز عبور"/>
                             <SingUpButton {...formik}/>
-                            <section className='flex justify-center items-center gap-x-2'>
+                            <section className='flex justify-center items-center gap-x-2 text-sm'>
                                 <p>قبلا ثبت نام کردید؟</p>
                                 <NavLink className="text-blue-700 dark:text-blue-500" to="/login">ورود به حساب</NavLink>
                             </section>

@@ -7,8 +7,8 @@ const LoginButton = (props) => {
     return (
         <section className='flex justify-center'>
             <button className={`form-btn ${!isValid && 'opacity-50'}`}
-            type="submit" disabled={isValid}>
-                {isSubmitting ? "صبور باشید ..." : "ورود"}
+            type="submit" disabled={!isValid}>
+                {isSubmitting ? "درحال ورود به حساب..." : "ورود"}
             </button>
         </section>
     );

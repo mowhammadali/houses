@@ -26,7 +26,7 @@ const Login = () => {
                             <Input name="loginEmail" type="email" label="ایمیل"/>
                             <Input name="loginPassword" type="password" label="رمز عبور"/>
                             <LoginButton {...formik}/>
-                            <section className='flex justify-center items-center gap-x-2'>
+                            <section className='flex justify-center items-center gap-x-2 text-sm'>
                                 <p>حساب کاربری ندارید؟</p>
                                 <NavLink className="text-blue-700 dark:text-blue-500" to="/register">ثبت نام</NavLink>
                             </section>

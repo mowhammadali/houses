@@ -12,7 +12,7 @@
     @apply h-[35px] rounded-xl outline-none px-4 text-slate-700;
   }
   .form-btn{
-    @apply px-12 py-2 text-xl rounded-3xl bg-emerald-600 text-slate-50;
+    @apply w-[180px] px-2 py-2 text-sm rounded-3xl bg-emerald-600 text-slate-50;
   }
 }
 
