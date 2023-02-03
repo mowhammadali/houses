@@ -8,9 +8,13 @@ const Users = ({children}) => {
     const [users , setUsers] = useState([])
     const [validate , setValidate] = useState(false);
     const [loggedIn , setLoggedIn] = useState(
-        sessionStorage.getItem('login') || false
+        JSON.parse(sessionStorage.getItem('login')) || false
     );
+    const [userData , setUserData] = useState(
+        JSON.parse(sessionStorage.getItem('userData')) || {}
+    )
 
+    // useEffects
     useEffect(() => {
         const getUsers = async () => {
             axios.get('http://localhost:3004/posts')
@@ -18,13 +22,23 @@ const Users = ({children}) => {
                 setUsers([...res.data]);
                 console.log(res);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setUsers([]);
+            })
         }
         getUsers();
     } , [validate])
 
+    useEffect(() => {
+        sessionStorage.setItem('login' , loggedIn);
+    } , [loggedIn])
+
+    useEffect(() => {
+        sessionStorage.setItem('userData' , JSON.stringify(userData));
+    } , [userData])
+
     return (
-        <UsersContext.Provider value={{users , validate , setValidate , loggedIn , setLoggedIn}}>
+        <UsersContext.Provider value={{users , validate , setValidate , loggedIn , setLoggedIn , userData , setUserData}}>
             {children}
         </UsersContext.Provider>
     );

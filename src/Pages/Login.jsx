@@ -1,5 +1,5 @@
-import React , { useContext, useEffect } from 'react';
-import { NavLink  , Navigate , useNavigate} from 'react-router-dom';
+import React , { useContext } from 'react';
+import { NavLink , useNavigate} from 'react-router-dom';
 import { Formik , Form } from 'formik';
 
 // toastify
@@ -8,6 +8,7 @@ import { errorNotify , successNotify } from '../Helper/toastify.js';
 // components
 import Input from "../Formik/Input.jsx";
 import LoginButton from '../Formik/LoginButton.jsx';
+import Nav from '../Components/Nav.jsx';
 
 // formik
 import { initialValues2 , validationSchema2 } from "../Formik/FormikData.js";
@@ -17,18 +18,21 @@ import { UsersContext } from '../Context/Users.js';
 
 const Login = () => {
     // use context
-    const {users , loggedIn , setLoggedIn} = useContext(UsersContext);
+    const {users , setLoggedIn , setUserData} = useContext(UsersContext);
 
+    // navigate
     const navigate = useNavigate();
 
     const onSubmit = (values , submitProps) => {
-        const findEmail = users.find(user => ((user.email === values.loginEmail) && (user.password === values.loginPassword)) );
-        console.log(findEmail);
-        if(findEmail){
+        const findUser = users.find(user => ((user.email === values.loginEmail) && (user.password === values.loginPassword)) );
+        console.log(findUser);
+        if(findUser){
             successNotify('ورود به حساب');
             submitProps.setSubmitting(false);
             submitProps.resetForm();
+            setUserData({...findUser})
             setLoggedIn(true);
+            navigate('/dashboard');
         }
         else{
             errorNotify('ایمیل یا رمز عبور اشتباه است');
@@ -36,38 +40,34 @@ const Login = () => {
         }
     }
 
-    useEffect(() => {
-        sessionStorage.setItem('login' , loggedIn);
-        if(loggedIn){
-            navigate('/dashboard')
-        }
-    } , [loggedIn])
-
     return (
-        <Formik
-        initialValues={initialValues2}
-        onSubmit={onSubmit}
-        validationSchema={validationSchema2}
-        validateOnChange={true}
-        validateOnMount
-        enableReinitialize
-        >
-            {
-                formik => {
-                    return(
-                        <Form className='form'>
-                            <Input name="loginEmail" type="email" label="ایمیل"/>
-                            <Input name="loginPassword" type="password" label="رمز عبور"/>
-                            <LoginButton {...formik}/>
-                            <section className='flex justify-center items-center gap-x-2 text-sm'>
-                                <p>حساب کاربری ندارید؟</p>
-                                <NavLink className="text-blue-700 dark:text-blue-500" to="/register">ثبت نام</NavLink>
-                            </section>
-                        </Form>
-                    )
+        <>
+            <Nav />
+            <Formik
+            initialValues={initialValues2}
+            onSubmit={onSubmit}
+            validationSchema={validationSchema2}
+            validateOnChange={true}
+            validateOnMount
+            enableReinitialize
+            >
+                {
+                    formik => {
+                        return(
+                            <Form className='form'>
+                                <Input name="loginEmail" type="email" label="ایمیل"/>
+                                <Input name="loginPassword" type="password" label="رمز عبور"/>
+                                <LoginButton {...formik}/>
+                                <section className='flex justify-center items-center gap-x-2 text-sm'>
+                                    <p>حساب کاربری ندارید؟</p>
+                                    <NavLink className="text-blue-700 dark:text-blue-500" to="/register">ثبت نام</NavLink>
+                                </section>
+                            </Form>
+                        )
+                    }
                 }
-            }
-        </Formik>
+            </Formik>
+        </>
     );
 };
 

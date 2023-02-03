@@ -12,7 +12,7 @@ const Nav = () => {
     // use context
     const {mode , modeHandler} = useContext(ThemeContext);
     const {loggedIn} = useContext(UsersContext);
-
+    console.log(loggedIn);
 
     return (
         <div className='w-full h-20 px-12 shadow-lg flex 
@@ -30,8 +30,10 @@ const Nav = () => {
                 }
                 {
                     loggedIn 
-                    ?  <NavLink className='select-none' to="/dashboard">حساب کاربری</NavLink>
-                    : <NavLink className='select-none' to="/login">ورود / ثبت نام</NavLink>
+                    ? 
+                    <NavLink className='select-none' to="/dashboard">حساب کاربری</NavLink>
+                    : 
+                    <NavLink className='select-none' to="/login">ورود / ثبت نام</NavLink>
                 }
             </section>
         </div>

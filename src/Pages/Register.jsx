@@ -1,5 +1,5 @@
 import React , { useContext } from 'react';
-import { NavLink  , Navigate} from 'react-router-dom';
+import { NavLink  , useNavigate} from 'react-router-dom';
 import { Formik , Form } from 'formik';
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ import { errorNotify , successNotify } from '../Helper/toastify.js';
 // components
 import Input from "../Formik/Input.jsx";
 import SingUpButton from "../Formik/SignUpButton.jsx";
+import Nav from '../Components/Nav.jsx';
 
 // formik
 import { initialValues , validationSchema } from "../Formik/FormikData.js";
@@ -18,7 +19,10 @@ import { UsersContext } from '../Context/Users.js';
 
 const Register = () => {
     // use Context
-    const {users , loggedIn , setLoggedIn} = useContext(UsersContext);
+    const {users , setLoggedIn , setUserData} = useContext(UsersContext);
+
+    // navigate
+    const navigate = useNavigate();
 
     // submit
     const onSubmit = (values , submitProps) => {
@@ -35,8 +39,9 @@ const Register = () => {
                     successNotify('ثبت نام با موفقیت انجام شد')
                     submitProps.setSubmitting(false);
                     submitProps.resetForm();
+                    setUserData({...userData})
                     setLoggedIn(true);
-                    <Navigate to="/dashboard"/>
+                    navigate('/dashboard')
                 })
                 .catch(err => {
                     submitProps.setSubmitting(false);
@@ -52,32 +57,35 @@ const Register = () => {
     }
 
     return (
-        <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={validationSchema}
-        validateOnChange={true}
-        validateOnMount
-        enableReinitialize
-        >
-            {
-                formik => {
-                    return(
-                        <Form className='form'>
-                            <Input name="name" type="text" label="نام کاربری"/>
-                            <Input name="email" type="email" label="ایمیل"/>
-                            <Input name="password" type="password" label="رمز عبور"/>
-                            <Input name="confirmPassword" type="password" label="تکرار رمز عبور"/>
-                            <SingUpButton {...formik}/>
-                            <section className='flex justify-center items-center gap-x-2 text-sm'>
-                                <p>قبلا ثبت نام کردید؟</p>
-                                <NavLink className="text-blue-700 dark:text-blue-500" to="/login">ورود به حساب</NavLink>
-                            </section>
-                        </Form>
-                    )
+        <>
+            <Nav />
+            <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+            validateOnChange={true}
+            validateOnMount
+            enableReinitialize
+            >
+                {
+                    formik => {
+                        return(
+                            <Form className='form'>
+                                <Input name="name" type="text" label="نام کاربری"/>
+                                <Input name="email" type="email" label="ایمیل"/>
+                                <Input name="password" type="password" label="رمز عبور"/>
+                                <Input name="confirmPassword" type="password" label="تکرار رمز عبور"/>
+                                <SingUpButton {...formik}/>
+                                <section className='flex justify-center items-center gap-x-2 text-sm'>
+                                    <p>قبلا ثبت نام کردید؟</p>
+                                    <NavLink className="text-blue-700 dark:text-blue-500" to="/login">ورود به حساب</NavLink>
+                                </section>
+                            </Form>
+                        )
+                    }
                 }
-            }
-        </Formik>
+            </Formik>
+        </>
     );
 };
 

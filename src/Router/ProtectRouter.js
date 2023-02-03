@@ -1,8 +1,7 @@
 import React from 'react';
-import { useNavigate , Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const ProtectRouter = ({loggedIn , children}) => {
-    const navigate = useNavigate();
     if(!loggedIn){
         return <Navigate to='/'/>
     }
