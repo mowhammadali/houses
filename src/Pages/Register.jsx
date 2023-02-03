@@ -1,15 +1,53 @@
 import React , { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Formik , Form } from 'formik';
+import axios from 'axios';
+
+// toastify
+import { errorNotify , successNotify } from '../Helper/toastify.js';
 
 // components
 import Input from "../Formik/Input.jsx";
 import SingUpButton from "../Formik/SignUpButton.jsx";
 
 // formik
-import { initialValues , onSubmit , validationSchema } from "../Formik/FormikData.js";
+import { initialValues , validationSchema } from "../Formik/FormikData.js";
+
+// import context
+import { UsersContext } from '../Context/Users.js';
 
 const Register = () => {
+    // use Context
+    const {users} = useContext(UsersContext);
+
+    // submit
+    const onSubmit = (values , submitProps) => {
+        const findUser = users.find(user => user.email === values.email);
+        if(!findUser){
+            let userData = {
+                name: values.name,
+                email: values.email,
+                password: values.password
+            }
+            const sendUserData = async () => {
+                axios.post(" http://localhost:3004/posts" , userData)
+                .then(res => {
+                    successNotify('ثبت نام با موفقیت انجام شد')
+                    submitProps.setSubmitting(false);
+                    submitProps.resetForm();
+                })
+                .catch(err => {
+                    submitProps.setSubmitting(false);
+                    errorNotify('مجددا تلاش کنید')
+                })
+            }
+            sendUserData();
+        }
+        else{
+            errorNotify('این ایمیل قبلا استفاده شده است');
+            submitProps.setSubmitting(false);
+        }
+    }
 
     return (
         <Formik

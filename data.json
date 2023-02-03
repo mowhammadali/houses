@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "name": "sdfs",
+      "email": "example@gmail.com",
+      "password": "1234567qW",
+      "id": 1
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

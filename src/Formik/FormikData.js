@@ -12,14 +12,6 @@ export const initialValues2 = {
     loginPassword: ""
 }
 
-export const onSubmit = (values , submitProps) => {
- 
-}
-
-export const onSubmit2 = (values , submitProps) => {
-  
-}
-
 export const validationSchema = yup.object({
     name: yup.string().required("لطفا فیلد را پر کنید").min(3 , 'نام کاربری کوتاه است').max(60 , "نام کاربری بیش از حد مجاز است"),
     email: yup.string().required('لطفا فیلد را پر کنید').email("ایمیل نامعتبر است"),
