@@ -1,5 +1,5 @@
-import React , { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React , { useContext, useEffect } from 'react';
+import { NavLink  , Navigate , useNavigate} from 'react-router-dom';
 import { Formik , Form } from 'formik';
 
 // toastify
@@ -17,23 +17,31 @@ import { UsersContext } from '../Context/Users.js';
 
 const Login = () => {
     // use context
-    const {users} = useContext(UsersContext);
-    console.log(users);
+    const {users , loggedIn , setLoggedIn} = useContext(UsersContext);
+
+    const navigate = useNavigate();
 
     const onSubmit = (values , submitProps) => {
-        console.log(values);
-        const findEmail = users.find(user => user.email === values.loginEmail);
-        const findPassword = users.find(user => user.password === values.loginPassword);
-        if(findEmail && findPassword){
+        const findEmail = users.find(user => ((user.email === values.loginEmail) && (user.password === values.loginPassword)) );
+        console.log(findEmail);
+        if(findEmail){
             successNotify('ورود به حساب');
             submitProps.setSubmitting(false);
             submitProps.resetForm();
+            setLoggedIn(true);
         }
         else{
             errorNotify('ایمیل یا رمز عبور اشتباه است');
             submitProps.setSubmitting(false);
         }
     }
+
+    useEffect(() => {
+        sessionStorage.setItem('login' , loggedIn);
+        if(loggedIn){
+            navigate('/dashboard')
+        }
+    } , [loggedIn])
 
     return (
         <Formik

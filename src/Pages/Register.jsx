@@ -1,5 +1,5 @@
 import React , { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink  , Navigate} from 'react-router-dom';
 import { Formik , Form } from 'formik';
 import axios from 'axios';
 
@@ -18,7 +18,7 @@ import { UsersContext } from '../Context/Users.js';
 
 const Register = () => {
     // use Context
-    const {users} = useContext(UsersContext);
+    const {users , loggedIn , setLoggedIn} = useContext(UsersContext);
 
     // submit
     const onSubmit = (values , submitProps) => {
@@ -35,6 +35,8 @@ const Register = () => {
                     successNotify('ثبت نام با موفقیت انجام شد')
                     submitProps.setSubmitting(false);
                     submitProps.resetForm();
+                    setLoggedIn(true);
+                    <Navigate to="/dashboard"/>
                 })
                 .catch(err => {
                     submitProps.setSubmitting(false);
