@@ -11,6 +11,9 @@
   .input{
     @apply h-[35px] rounded-xl outline-none px-4 text-slate-700;
   }
+  .text-area{
+    @apply h-[120px] rounded-xl outline-none p-4  text-slate-700;
+  }
   .form-btn{
     @apply w-[180px] px-2 py-2 text-sm rounded-3xl bg-emerald-600 text-slate-50;
   }

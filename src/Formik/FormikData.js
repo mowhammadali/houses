@@ -12,6 +12,12 @@ export const initialValues2 = {
     loginPassword: ""
 }
 
+export const initialValues3 = {
+    phone: "",
+    address: "",
+    description: ""
+}
+
 export const validationSchema = yup.object({
     name: yup.string().required("لطفا فیلد را پر کنید").min(3 , 'نام کاربری کوتاه است').max(60 , "نام کاربری بیش از حد مجاز است"),
     email: yup.string().required('لطفا فیلد را پر کنید').email("ایمیل نامعتبر است"),
@@ -22,4 +28,9 @@ export const validationSchema = yup.object({
 export const validationSchema2 = yup.object({
     loginEmail: yup.string().required("لطفا فیلد را پر کنید").email("ایمیل نامعتبر است"),
     loginPassword: yup.string().required("لطفا فیلد را پر کنید"),
+})
+
+export const validationSchema3 = yup.object({
+    phone: yup.string().required("لطفا فیلد را پر کنید"),
+    address: yup.string().required("لطفا فیلد را پر کنید"),
 })

@@ -22,8 +22,8 @@ const SideBar = ({show , setShow}) => {
     return (
         <aside className={`absolute w-[280px] h-full bg-slate-300
         flex flex-col items-center gap-y-12 px-4 dark:bg-zinc-700
-        ${show ? "translate-x-0" : "translate-x-[100%]"} transition-all
-        duration-1000 ease-in-out
+        ${show ? "translate-x-0" : "translate-x-[100%]"} transition-transform
+        duration-1000 ease-in-out shadow-md
         sm:static sm:translate-x-0`}>
             <FaRegWindowClose className='text-3xl self-end mt-2 cursor-pointer sm:hidden'
             onClick={() => setShow(!show)}/>

@@ -9,7 +9,6 @@ import { UsersContext } from '../Context/Users';
 const User = () => {
     // use context
     const { userData } = useContext(UsersContext);
-    console.log(userData);
 
     return (
         <div className='flex flex-col items-center gap-y-4

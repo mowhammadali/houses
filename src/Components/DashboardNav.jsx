@@ -18,7 +18,7 @@ const DashboardNav = ({show , setShow}) => {
     const exitHandler = () => {
         setLoggedIn(false);
     }
-    console.log(show);
+
     return (
         <div className='flex items-center justify-between 
         w-full h-[70px] px-8 shadow-lg sm:px-16'>
@@ -26,7 +26,7 @@ const DashboardNav = ({show , setShow}) => {
                 <NavLink className='flex items-center gap-x-1 text-2xl' 
                 to="/">
                     <TiHome />
-                    <p className='text-xl'>خانه</p>
+                    <p className='text-xl select-none'>خانه</p>
                 </NavLink>
                 {
                     mode === 'light'
@@ -42,7 +42,7 @@ const DashboardNav = ({show , setShow}) => {
                 <section className='flex items-center gap-x-1 text-2xl cursor-pointer'
                 onClick={exitHandler}>
                     <FaPowerOff />
-                    <p className='text-xl'>خروج</p>
+                    <p className='text-xl select-none'>خروج</p>
                 </section>
             </div>
         </div>
