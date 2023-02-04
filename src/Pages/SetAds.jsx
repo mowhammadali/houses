@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState  , useContext} from 'react';
 import { Formik , Form } from 'formik';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -13,12 +13,18 @@ import Map from '../Components/Map';
 // formik
 import { initialValues3 , validationSchema3 } from '../Formik/FormikData';
 
+// import context
+import { HouseContext } from '../Context/Houses';
+
 // export context
 export const CoordinatesContext = React.createContext();
 
 const SetAds = () => {
     // navigate
     const navigate = useNavigate();
+
+    // use context
+    const { updateData , setUpdateData } = useContext(HouseContext);
 
     // use state
     const [coordinates  , setCoordinates] = useState(null);
@@ -36,7 +42,8 @@ const SetAds = () => {
             .then(res => {
                 submitProps.setSubmitting(false);
                 submitProps.resetForm();
-                successNotify('آگهی با موفقیت ثبت  شد')
+                successNotify('آگهی با موفقیت ثبت  شد');
+                setUpdateData(!updateData);
                 navigate('/');
             })
             .catch(err => {

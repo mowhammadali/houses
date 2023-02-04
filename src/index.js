@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // context wrap
 import Theme from './Context/Theme';
 import Users from './Context/Users';
+import Houses from './Context/Houses';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +20,9 @@ root.render(
     <BrowserRouter>
       <Theme>
         <Users>
-          <App />
+          <Houses>
+            <App />
+          </Houses>
           <ToastContainer />
         </Users>
       </Theme>

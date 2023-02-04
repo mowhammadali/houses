@@ -20,7 +20,6 @@ const Users = ({children}) => {
             await axios.get('http://localhost:3004/posts')
             .then(res => {
                 setUsers([...res.data]);
-                console.log(res);
             })
             .catch(err => {
                 setUsers([]);

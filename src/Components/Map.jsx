@@ -19,7 +19,7 @@ const Map = () => {
     }, []);
 
     return (
-        <div className='w-full h-[150px]'>
+        <div className='w-full h-[150px] border-2 border-cyan-800'>
             <MapContainer
                 center={{ lat: 35.699655, lng: 51.337264 }}
                 zoom={13}

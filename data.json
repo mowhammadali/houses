@@ -23,6 +23,46 @@
         "lng": 51.06
       },
       "id": 1
+    },
+    {
+      "tel": "9125896532",
+      "address": "مشهد",
+      "description": "",
+      "position": {
+        "lat": 35.698,
+        "lng": 51.4114
+      },
+      "id": 2
+    },
+    {
+      "tel": "9195058888",
+      "address": "اراک",
+      "description": "حیاط دار",
+      "position": {
+        "lat": 35.698,
+        "lng": 51.4114
+      },
+      "id": 3
+    },
+    {
+      "tel": "9359998825",
+      "address": "رشت",
+      "description": "",
+      "position": {
+        "lat": 35.698,
+        "lng": 51.4114
+      },
+      "id": 4
+    },
+    {
+      "tel": "9128887745",
+      "address": "بندر عباس",
+      "description": "",
+      "position": {
+        "lat": 35.6599,
+        "lng": 51.06
+      },
+      "id": 5
     }
   ],
   "profile": {

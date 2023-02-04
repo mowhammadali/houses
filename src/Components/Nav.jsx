@@ -12,7 +12,6 @@ const Nav = () => {
     // use context
     const {mode , modeHandler} = useContext(ThemeContext);
     const {loggedIn} = useContext(UsersContext);
-    console.log(loggedIn);
 
     return (
         <div className='w-full h-20 px-12 shadow-lg flex 
