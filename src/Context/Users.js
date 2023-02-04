@@ -17,7 +17,7 @@ const Users = ({children}) => {
     // useEffects
     useEffect(() => {
         const getUsers = async () => {
-            axios.get('http://localhost:3004/posts')
+            await axios.get('http://localhost:3004/posts')
             .then(res => {
                 setUsers([...res.data]);
                 console.log(res);

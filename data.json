@@ -13,7 +13,18 @@
       "id": 2
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "tel": "9128006521",
+      "address": "تهران ، تهرانسر",
+      "description": "110 متر ، دو خوابه",
+      "position": {
+        "lat": 35.6599,
+        "lng": 51.06
+      },
+      "id": 1
+    }
+  ],
   "profile": {
     "name": "typicode"
   }

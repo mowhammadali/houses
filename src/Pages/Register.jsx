@@ -34,7 +34,7 @@ const Register = () => {
                 password: values.password
             }
             const sendUserData = async () => {
-                axios.post(" http://localhost:3004/posts" , userData)
+                await axios.post("http://localhost:3004/posts" , userData)
                 .then(res => {
                     successNotify('ثبت نام با موفقیت انجام شد')
                     submitProps.setSubmitting(false);

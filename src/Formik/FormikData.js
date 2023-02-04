@@ -31,6 +31,6 @@ export const validationSchema2 = yup.object({
 })
 
 export const validationSchema3 = yup.object({
-    phone: yup.string().required("لطفا فیلد را پر کنید"),
+    phone: yup.string().required("لطفا فیلد را پر کنید").matches(/^\d{10}$/ , 'شماره صحیح وارد نشده است'),
     address: yup.string().required("لطفا فیلد را پر کنید"),
 })
