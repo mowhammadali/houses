@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field , ErrorMessage , FastField} from 'formik';
+import {Field , ErrorMessage} from 'formik';
 
 const TextArea = ({name , label}) => {
     return (
