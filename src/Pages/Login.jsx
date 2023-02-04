@@ -25,7 +25,6 @@ const Login = () => {
 
     const onSubmit = (values , submitProps) => {
         const findUser = users.find(user => ((user.email === values.loginEmail) && (user.password === values.loginPassword)) );
-        console.log(findUser);
         if(findUser){
             successNotify('ورود به حساب');
             submitProps.setSubmitting(false);

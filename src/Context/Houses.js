@@ -19,7 +19,6 @@ const Houses = ({children}) => {
                 setHouse(res.data);
                 setLoading(false);
                 setError('');
-                console.log(res.data);
             })
             .catch(err => {
                 console.log(err);
