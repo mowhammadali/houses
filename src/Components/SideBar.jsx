@@ -20,7 +20,7 @@ const SideBar = ({show , setShow}) => {
     }
 
     return (
-        <aside className={`absolute w-[280px] h-full bg-slate-300
+        <aside className={`absolute z-40 w-[280px] h-full bg-slate-300
         flex flex-col items-center gap-y-12 px-4 dark:bg-zinc-700
         ${show ? "translate-x-0" : "translate-x-[100%]"} transition-transform
         duration-1000 ease-in-out shadow-md
@@ -31,14 +31,16 @@ const SideBar = ({show , setShow}) => {
             <ul className='flex flex-col items-center gap-y-10 w-full'>
                 <li className='w-full'>
                     <NavLink className={`flex items-center justify-center py-2
-                    rounded-xl gap-x-2 w-full bg-slate-400`} to="/dashboard">
+                    rounded-xl gap-x-2 w-full bg-slate-400`} to="/dashboard"
+                    onClick={() => setShow(false)}>
                         <MdDashboard />
                         <p>داشبورد</p>
                     </NavLink>
                 </li>
                 <li className='w-full'>
                     <NavLink className="flex items-center justify-center py-2
-                    rounded-xl gap-x-2 w-full bg-slate-400" to="/dashboard/ads">
+                    rounded-xl gap-x-2 w-full bg-slate-400" to="/dashboard/ads"
+                    onClick={() => setShow(false)}>
                         <FaEdit />
                         <p>ثبت آگهی</p>
                     </NavLink>

@@ -20,6 +20,9 @@
   .ads-btn{
     @apply px-10 py-2 rounded-3xl text-lg bg-orange-500 text-slate-50;
   }
+  .modal-btn{
+    @apply w-[100px] px-2 py-2 text-sm rounded-3xl bg-emerald-600 text-slate-50;
+  }
 }
 
 @font-face {
@@ -47,4 +50,5 @@ code {
 .leaflet-container{
   width: 100%;
   height: 100%;
+  z-index: 0;
 }

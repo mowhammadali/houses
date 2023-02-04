@@ -18,7 +18,7 @@ import { UsersContext } from './Context/Users';
 
 const App = () => {
     // use context
-    const {setLoggedIn , loggedIn , userData} = useContext(UsersContext);
+    const {loggedIn} = useContext(UsersContext);
     
     return (
         <div>
@@ -30,7 +30,6 @@ const App = () => {
                 element={
                     <ProtectRouter loggedIn={loggedIn}>
                         <Dashboard />
-                        {/* loggedIn={loggedIn} setLoggedIn={setLoggedIn} data={userData} */}
                     </ProtectRouter>}
                 >
                     <Route index element={<User />}/>

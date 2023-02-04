@@ -76,7 +76,7 @@ const SetAds = () => {
             {
                 formik => {
                     return(
-                        <Form className='flex flex-col items-center gap-y-6 w-[350px] h-[500px]
+                        <Form className='flex flex-col items-center gap-y-6 w-[300px] h-[500px]
                         p-4 shadow-lg mt-8 rounded-lg bg-gray-300 dark:bg-gray-700'>
                             <AdsInput name="phone" type="tel" label="شماره تماس (بدون صفر)"/>
                             <AdsInput name="address" type="text" label="آدرس"/>
